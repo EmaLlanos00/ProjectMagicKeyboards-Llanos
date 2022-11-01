@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envía producto</title>
+</head>
+
+<body>
+    Holandaaaaaaaaaaa!
+    <form action="/api/productos/" method="post" style="width: 300px;">
+        <fieldset>
+            <legend>Ingrese un producto</legend>
+            <div style="padding: 10px;">
+                <label for="title"> Nombre: </label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div style="padding: 10px;">
+                <label for="price"> Precio: </label>
+                <input type="number" name="price" id="price">
+            </div>
+            <div style="padding: 10px;">
+                <label for="thumbnail"> Foto: </label>
+                <input type="text" name="thumbnail" id="thumbnail">
+            </div>
+            <button type="submit">Enviar</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>
