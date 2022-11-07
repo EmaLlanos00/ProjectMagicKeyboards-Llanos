@@ -1,0 +1,37 @@
+<body>
+    <h1 class="text-center">{{title}}</h1>
+    <div class='w-100 d-flex justify-content-center'>
+        <a href="/" class="btn btn-info mx-auto mb-3">Inicio</a>
+    </div>
+    <div>
+        <table class='border border-2 border-dark mx-auto'>
+            <caption>Lista de productos de MagicKeyboards de {{fecha}}</caption>
+            <thead>
+                <tr class='border border-secondary border-top-0 border-start-0 border-end-0 border-bottom-2'>
+                    <th class='bg-success p-1 text-center'>Producto</th>
+                    <th
+                        class='bg-success border border-secondary border-top-0 border-bottom-0 border-2 p-1 text-center'>
+                        Precio</th>
+                    <th class='bg-success p-1 text-center'>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productos}}
+                <tr>
+                    <td
+                        class='bg-info border border-secondary border-end-2 border-start-0 border-bottom-0 border-top-0 p-2'>
+                        {{title}}</td>
+                    <td
+                        class='bg-info border border-secondary border-end-2 border-start-0 border-bottom-0 border-top-0 p-2'>
+                        {{price}}</td>
+                    <td class='bg-info  p-2'> <img src={{thumbnail}} alt="{{title}} foto" style="width:350px;"></td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

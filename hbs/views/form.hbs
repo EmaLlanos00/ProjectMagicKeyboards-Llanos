@@ -1,0 +1,21 @@
+<h1>{{title}}</h1>
+<form action="/" method="post" style="width:500px;">
+    <fieldset>
+        <legend>Agregue un producto</legend>
+        <div>
+            <label for="title">Nombre</label>
+            <input type="text" name="title" id="title" class='d-block mb-3 border border-1 border-success rounded'>
+        </div>
+        <div>
+            <label for="price">Precio</label>
+            <input type="number" name="price" id="price" class='d-block mb-3 border border-1 border-success rounded'>
+        </div>
+        <div>
+            <label for="thumbnail">Imagen</label>
+            <input type="text" name="thumbnail" id="thumbnail"
+                class='d-block mb-3 border border-1 border-success rounded'>
+        </div>
+        <button type="submit" class='mb-3 rounded border border-info'>Enviar</button>
+    </fieldset>
+</form>
+<a href="/productos" class="btn btn-info">Ver productos</a>

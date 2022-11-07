@@ -1,0 +1,24 @@
+doctype html
+html(lang='es')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width', initial-scañe='1.0')
+        title="Pug form"
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    body
+        h1=title
+        form(action="/", method="post", style="width:500px;")
+            fieldset
+                legend='Agregar producto'
+                div
+                    label(for="title")='Ingrese nombre' 
+                    input#title(type="text", name="title", class='d-block mb-3 border border-1 border-success rounded')
+                div
+                    label(for="price")='Ingrese precio' 
+                    input#title(type="number", name="price", class='d-block mb-3 border border-1 border-success rounded')
+                div
+                    label(for="thumbnail")='Ingrese miniatura (link)' 
+                    input#title(type="text", name="thumbnail", class='d-block mb-3 border border-1 border-success rounded')
+                button(type="submit", class='mb-3 rounded border border-info')='enviar'           
+        div 
+            a(href='/productos', class='btn btn-info')='Ver productos'

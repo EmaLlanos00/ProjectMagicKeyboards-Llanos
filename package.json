@@ -2,11 +2,12 @@
   "name": "projectmagickeyboards",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app-pug.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon app.js"
+    "pug": "cd pug && nodemon app-pug.js",
+    "hbs": "cd hbs && nodemon app-hbs.js",
+    "ejs": "cd ejs && nodemon app-ejs.js"
   },
   "keywords": [],
   "author": "Emanuel Llanos",
@@ -15,6 +16,9 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "pug": "^3.0.2"
   }
 }
