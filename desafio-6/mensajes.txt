@@ -1,0 +1,7 @@
+[
+	{
+		"email": "mail@ejemplo.com",
+		"msg": "Hola, este es el chat de productos",
+		"date": "Soy una fecha"
+	}
+]

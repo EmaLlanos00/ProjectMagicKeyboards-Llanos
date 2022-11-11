@@ -1,27 +1,33 @@
 const express = require('express');
-const ApiProducts = require('../(old)desafios-3-y-4/apiProducts');
+const { engine } = require('express-handlebars');
+const ApiProducts = require('../../(old)desafios-3-y-4/apiProducts')
 
-
-//llamanado funciones
+//llamando funciones
 const app = express()
 const apiProducts = new ApiProducts();
 
-const PORT = 8080;
+const PORT = 3000
 
 //middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+//configurando el motor
+app.engine("hbs", engine({
+    extname: ".hbs",
+    defaultLayout: "index.hbs",
+    layoutsDir: __dirname + "/views"
+})
+)
+
 //seteando plantillas y motor
 app.set('views', './views');
-app.set('view engine', 'pug');
-
-
+app.set('view engine', 'hbs');
 
 //configurando las peticiones para este servidor
 
 app.get('/', (req, res) => {
-    res.render('index', { title: "Hola desde pug engine" })
+    res.render('form', { pageTitle: 'Hbs form', title: 'Hola desde hbs!' })
 })
 
 app.get('/productos', (req, res) => {
@@ -29,7 +35,7 @@ app.get('/productos', (req, res) => {
     let mesActual = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date());
     let actualYear = new Date().getFullYear()
     let fechaActual = `${mesActual} ${actualYear}`//fecha dinámica para el caption de table
-    res.render('productos', { title: "Lista de productos con Pug!", products: array, fecha: fechaActual })
+    res.render('productos', { pageTitle: 'Lista de productos', title: 'Lista de productos desde Hbs!', productos: array, fecha: fechaActual })
 })
 
 app.post('/', (req, res) => {
@@ -37,13 +43,6 @@ app.post('/', (req, res) => {
     res.redirect('/')
 })
 
-//ejercicio de prueba
-app.get('/meter', (req, res) => {
-    //meter?min=5&nivel=15&max=20&title=<i>meter</i>
-    res.render('medidor', req.query);
-})
-
-
 //Ejecutando el servidor en sí
 
-app.listen(PORT, console.log(`running pug server in http://localhost:${PORT}`));
+app.listen(PORT, console.log(`running hbs server in http://localhost:${PORT}`));
