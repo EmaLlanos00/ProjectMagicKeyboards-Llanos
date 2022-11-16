@@ -32,9 +32,15 @@ module.exports = class Contenedor {
 
         let dataArray = []
         try {
-            const data = JSON.stringify(await fs.promises.readFile(this.fileRoute, "utf-8"))
-            dataArray = JSON.parse(data)
-            return dataArray
+            const rawData = await fs.promises.readFile(this.fileRoute, "utf-8")
+            if (rawData.length == 0) {
+                return dataArray
+            } else {
+                const data = JSON.stringify(rawData)
+                dataArray = JSON.parse(data)
+                return dataArray
+            }
+
         }
         catch (err) {
 

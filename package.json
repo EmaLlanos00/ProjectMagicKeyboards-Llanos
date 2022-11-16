@@ -8,7 +8,8 @@
     "pug": "cd pug && nodemon app-pug.js",
     "hbs": "cd hbs && nodemon app-hbs.js",
     "ejs": "cd ejs && nodemon app-ejs.js",
-    "dev": "cd desafio-6 && nodemon ws-server.js"
+    "dev": "cd preentrega1 && nodemon server.js",
+    "old": "cd (old)desafios-3-y-4 && nodemon app.js"
   },
   "keywords": [],
   "author": "Emanuel Llanos",

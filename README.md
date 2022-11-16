@@ -1,8 +1,11 @@
 # Proyecto Magic Keyboards
 
 ## Introducción
+La idea de hacer un ecommerse de teclados surgió de la premisa de hacer algo original, de nicho, que pueda volcar en un proyecto tan conocido como las tiendas online.
+Me gustan los periféricos, y si pudiera tendría varios teclados, creo que abordar un proyecto personal conectándolo con algo que a uno le gusta simplifica un poco la tarea.
 
 ## Estructura del proyecto
+La génesis de este proyecto es el trabajo final del curso de backend de Coderhouse, ergo lo más sustancial es el trabajo del lado del servidor por sobre lo visual. Mi idea es hacer una SPA sencilla con categorías como keycaps, switches, placas, lubricantes, cases, teclados, etc.
 
 ## Heramientas utilizadas
 - nodeJs: lenguaje de javascript optimizado para servidores y para ejecutarse por fuera de un browser. Es el código base que utilizamos en este curso.

@@ -16,10 +16,10 @@ httpServer.listen(8080, () => { console.log('Running ws server in http://localho
 
 //obteniendo datos de productos y usando arrayProds como contenedor auxiliar
 let arrayProds = []
-products.getAll().then(res => arrayProds = [...JSON.parse(res)])
+products.getAll().then(res => res.length == 0 ? console.log('archivo vacío') : arrayProds = [...JSON.parse(res)])
 
 let arrayMsgs = []
-messages.getAll().then(res => arrayMsgs = [...JSON.parse(res)])
+messages.getAll().then(res => res.length == 0 ? console.log('archivo vacío') : arrayMsgs = [...JSON.parse(res)])
 
 
 ioServer.on('connection', (socket) => {

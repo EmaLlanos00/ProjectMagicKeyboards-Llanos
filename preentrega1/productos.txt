@@ -1,0 +1,42 @@
+[
+	{
+		"title": "keyboard yellow",
+		"desc": "Teclado mecánico amarillo, tipo 60% con keycaps de PBT",
+		"cod": "001-KB",
+		"price": 75000,
+		"stock": 133,
+		"thumbnail": "https://i.ibb.co/VVMxyyf/jri165-teclado-yellow.jpg",
+		"id": 1,
+		"timestamp": 1668553515631
+	},
+	{
+		"title": "keyboard navy black",
+		"desc": "Teclado mecánico azul oscuro, tipo 60% con keycaps de PBT",
+		"cod": "002-KB",
+		"price": 73500,
+		"stock": 255,
+		"thumbnail": "https://i.ibb.co/qg8sd4Q/jri165-teclado-navy-black.jpg",
+		"timestamp": 1668553643047,
+		"id": 2
+	},
+	{
+		"title": "keyboard maroon black",
+		"desc": "Teclado mecánico rojo oscuro/negro, tipo 60% con keycaps de PBT",
+		"cod": "003-KB",
+		"price": 69000,
+		"stock": 174,
+		"thumbnail": "https://i.ibb.co/R6DRq2N/jri165-teclado-maroon-black.jpg",
+		"timestamp": 1668553862460,
+		"id": 3
+	},
+	{
+		"title": "switches ktt mint x10u",
+		"desc": "Switches por 10 unidades tipo mint, clicky con 0.4mm de trayectoria.",
+		"cod": "001-ST",
+		"price": 1500,
+		"stock": 233,
+		"thumbnail": "https://i.ibb.co/ZGkNppw/ktt-mint-10u.jpg",
+		"id": 4,
+		"timestamp": 1668569316153
+	}
+]

@@ -1,0 +1,34 @@
+[
+	{
+		"productos": [
+			{
+				"title": "keyboard navy black",
+		        "desc": "Teclado mecánico azul oscuro, tipo 60% con keycaps de PBT",
+		        "cod": "002-KB",
+		        "price": 73500,
+		        "stock": 255,
+		        "thumbnail": "https://i.ibb.co/qg8sd4Q/jri165-teclado-navy-black.jpg",
+		        "timestamp": 1668553643047,
+		        "id": 2
+			}
+		],
+		"timestamp": 1668556436976,
+		"id": 1
+	},
+	{
+		"productos": [
+			{
+				"title": "keyboard maroon black",
+				"desc": "Teclado mecánico rojo oscuro/negro, tipo 60% con keycaps de PBT",
+				"cod": "003-KB",
+				"price": 69000,
+				"stock": 174,
+				"thumbnail": "https://i.ibb.co/R6DRq2N/jri165-teclado-maroon-black.jpg",
+				"timestamp": 1668553862460,
+				"id": 3
+			}
+		],
+		"timestamp": 1668556469472,
+		"id": 2
+	}
+]
