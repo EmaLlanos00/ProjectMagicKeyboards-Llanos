@@ -8,13 +8,13 @@
 	{
 		"title": "keyboard navy black",
 		"price": 73500,
-		"thumbnail": "https://i.ibb.co/qg8sd4Q/jri165-teclado-navy-black.jpg",
+		"thumbnail": "https://i.ibb.co/VVMxyyf/jri165-teclado-yellow.jpg",
 		"id": 2
 	},
 	{
 		"title": "keyboard maroon black",
 		"price": 69000,
-		"thumbnail": "https://i.ibb.co/R6DRq2N/jri165-teclado-maroon-black.jpg",
+		"thumbnail": "https://i.ibb.co/VVMxyyf/jri165-teclado-yellow.jpg",
 		"id": 3
 	},
 	{

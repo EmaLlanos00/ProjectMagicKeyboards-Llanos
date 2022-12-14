@@ -25,11 +25,11 @@ addProd.addEventListener('submit', (e) => {
 })
 
 
-async function renderProducts(arrayProds) {
+async function renderProducts(dataProds) {
     const template = await fetch('/templates/main.hbs');
     const textTemplate = await template.text();
     const functionTemplate = Handlebars.compile(textTemplate);
-    const html = (functionTemplate({ products: arrayProds }));
+    const html = (functionTemplate({ products: dataProds }));
 
     document.querySelector('#productos').innerHTML = html;
 }
@@ -51,11 +51,11 @@ chat.addEventListener('submit', (e) => {
     }
 
 })
-async function renderMessages(arrayMsgs) {
+async function renderMessages(dataMsgs) {
     const template = await fetch('/templates/msgs.hbs');
     const textTemplate = await template.text();
     const functionTemplate = Handlebars.compile(textTemplate);
-    const html = (functionTemplate({ mensajes: arrayMsgs }));
+    const html = (functionTemplate({ mensajes: dataMsgs }));
 
     document.querySelector('#chatList').innerHTML = html;
 }
