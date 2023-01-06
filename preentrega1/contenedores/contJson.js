@@ -1,7 +1,6 @@
-//const fs = require('fs')
 import fs from 'fs'
 
-export default class ItemContainer {
+export default class ContJson {
     constructor(fileroute) {
 
         this.fileroute = fileroute
@@ -137,8 +136,6 @@ export default class ItemContainer {
             return null
         }
     }
-
-    // acá abajo: métodos exclusivos de carrito:
 
 
 }

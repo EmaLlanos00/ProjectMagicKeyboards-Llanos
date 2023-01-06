@@ -1,14 +1,18 @@
-const { response } = require('express');
-const express = require('express')
-const ItemContainer = require('./apiServer')
+//const { response } = require('express');
+//const express = require('express')
+import express from "express";
+//const ItemContainer = require('./apiServer')
+import { prodDao as productos } from "./daos/productos/indexProd.js";
+import { cartDao as carritos } from "./daos/carritos/indexCart.js";
+//import ItemContainer from "./apiServer.js";
 const { Router } = express;
 
 //invocando los elementos importados
 const app = express()
 const prodRouter = new Router()
 const cartRouter = new Router()
-const productos = new ItemContainer('./productos.txt')
-const carritos = new ItemContainer('./carritos.txt')
+//const productos = new ItemContainer('./productos.txt')
+//const carritos = new ItemContainer('./carritos.txt')
 
 const PORT = process.env.port || 8080
 
@@ -38,7 +42,7 @@ app.get('/logout', (req, res) => {
 
 prodRouter.get('/', (req, res) => {
 
-    productos.getAll().then(response => res.json(JSON.parse(response)))
+    productos.getAll().then(response => res.json(response))
 
 })
 
@@ -92,11 +96,8 @@ cartRouter.post('/:id/productos/:id_prod', (req, res) => {
             oldCart.productos.push(newProd)
             carritos.modifyById(req.params.id, oldCart).then(response => res.json(response))
         })
-
     }
     fetch();
-
-
 })
 
 cartRouter.delete('/:id/productos/:id_prod', (req, res) => {
@@ -122,9 +123,9 @@ cartRouter.delete('/:id/productos/:id_prod', (req, res) => {
     }
     fetch();
 })
-
-app.use('/api/productos', prodRouter)
 app.use('/api/carrito', cartRouter)
+app.use('/api/productos', prodRouter)
+
 
 app.all('*', (req, res) => {
     res.status(404).json({ "error": "ruta inexistente" })

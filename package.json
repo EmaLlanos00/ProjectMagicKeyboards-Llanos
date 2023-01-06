@@ -11,7 +11,8 @@
     "ejs": "cd ejs && nodemon app-ejs.js",
     "dev": "cd preentrega1 && nodemon server.js",
     "sql": "cd desafio-sql && nodemon ws-server-new.js",
-    "old": "cd (old)desafios-3-y-4 && nodemon app.js"
+    "old": "cd (old)desafios-3-y-4 && nodemon app.js",
+    "testing": "cd preentrega1 && nodemon testing.js"
   },
   "keywords": [],
   "author": "Emanuel Llanos",
@@ -23,7 +24,9 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
+    "firebase-admin": "^11.4.1",
     "knex": "^2.3.0",
+    "mongodb": "^4.13.0",
     "mysql2": "^2.3.3",
     "pug": "^3.0.2",
     "socket.io": "^4.5.3",
