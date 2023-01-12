@@ -42,20 +42,42 @@ chat.addEventListener('submit', (e) => {
         alert('Porfavor escribí un mail válido')
     } else {
         const newMsg = {
-            email: document.querySelector('#email').value,
-            msg: document.querySelector('#mensaje').value,
-            date: new Date()
+            author: {
+                id: document.querySelector('#email').value,
+                nombre: 'nombre del usuario',
+                apellido: 'apellido del usuario',
+                edad: 'edad del usuario',
+                alias: 'alias del usuario',
+                avatar: 'url avatar del usuario'
+
+            },
+            text: document.querySelector('#mensaje').value,
         }
         socket.emit('addNewMsg', newMsg)
         document.querySelector('#mensaje').value = ''
     }
 
 })
-async function renderMessages(dataMsgs) {
+
+
+async function renderMessages(normalizedData) {
+
+    const authorEntity = new normalizr.schema.Entity('users')
+    const messagesEntity = new normalizr.schema.Entity('messages', {
+        author: authorEntity
+    }, { idAttribute: 'text' })
+    const array = new normalizr.schema.Entity('array', {
+        mensajes: [messagesEntity]
+    })
+
+    const denormalizedMsgs = normalizr.denormalize(normalizedData.result, array, normalizedData.entities);
+    console.log(denormalizedMsgs)
+    const auxArray = [...denormalizedMsgs.mensajes]
+    console.log(auxArray)
     const template = await fetch('/templates/msgs.hbs');
     const textTemplate = await template.text();
     const functionTemplate = Handlebars.compile(textTemplate);
-    const html = (functionTemplate({ mensajes: dataMsgs }));
+    const html = (functionTemplate({ mensajes: auxArray }));
 
     document.querySelector('#chatList').innerHTML = html;
 }

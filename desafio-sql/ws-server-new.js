@@ -1,8 +1,10 @@
 import express from "express";
 import ContainerSql from "./containerSql.js";
-import { MysqlConfig, SqliteConfig } from './config.js'
+import { MysqlConfig, SqliteConfig, MongoDbConfig } from './config.js'
 import { Server as IoServer } from "socket.io";
 import { Server as HttpServer } from "http";
+import ContainerMongoDb from "./containerMongoDb.js";
+import { normalize, schema } from "normalizr"
 // const { Server: HttpServer } = require('http')
 // const { Server: IoServer } = require('socket.io')
 
@@ -12,6 +14,7 @@ const ioServer = new IoServer(httpServer);
 
 const DbProds = new ContainerSql(MysqlConfig, 'productos')
 const DbMsgs = new ContainerSql(SqliteConfig, 'mensajes')
+const NewDbMsgs = new ContainerMongoDb(MongoDbConfig.collection)
 
 app.use(express.static('public'))
 
@@ -21,7 +24,20 @@ ioServer.on('connection', async (socket) => {
     console.log('alguien se ha conectado')
 
     const dataProds = await DbProds.readDB()
-    const dataMsgs = await DbMsgs.readDB()
+
+    const newMsgs = await NewDbMsgs.getAll()
+
+    const cleanedMsgs = newMsgs.map(item => item.id)
+    const objToNormalize = { id: 'mensajes', mensajes: cleanedMsgs }
+
+    const authorEntity = new schema.Entity('users')
+    const messagesEntity = new schema.Entity('messages', {
+        author: authorEntity
+    }, { idAttribute: 'text' })
+    const array = new schema.Entity('array', {
+        mensajes: [messagesEntity]
+    })
+    const normalizedData = normalize(objToNormalize, array)
 
     socket.emit('items', dataProds)
 
@@ -35,25 +51,27 @@ ioServer.on('connection', async (socket) => {
 
     })
     //----------------------------------------------------
-    socket.emit('chats', dataMsgs)
+
+    socket.emit('chats', normalizedData)
 
     socket.on('addNewMsg', async (data) => {
 
-        // DbMsgs.saveInDB(data)
-        //     .then(res => {
-        //         console.log(`Recibido nuevo mensaje de ${res.email}`);
-        //         DbMsgs.readDB()
-        //             .then(res => {
+        await NewDbMsgs.addNewItem(data)
+        console.log(`Recibido nuevo mensaje de ${data.author.id}`)
+        const aux = await NewDbMsgs.getAll()
 
-        //                 ioServer.sockets.emit('chats', res)
-        //                 console.log(res)
-        //             })
-        //     })
-        await DbMsgs.saveInDB(data)
-        console.log(`Recibido nuevo mensaje de ${data.email}`)
-        const aux = await DbMsgs.readDB()
-        ioServer.sockets.emit('chats', aux)
+        const cleanedMsgs = aux.map(item => item.id)
+        const objToNormalize = { id: 'mensajes', mensajes: cleanedMsgs }
 
+        const authorEntity = new schema.Entity('users')
+        const messagesEntity = new schema.Entity('messages', {
+            author: authorEntity
+        }, { idAttribute: 'text' })
+        const array = new schema.Entity('array', {
+            mensajes: [messagesEntity]
+        })
+        const newNormData = normalize(objToNormalize, array)
+        ioServer.sockets.emit('chats', newNormData)
     })
 })
 

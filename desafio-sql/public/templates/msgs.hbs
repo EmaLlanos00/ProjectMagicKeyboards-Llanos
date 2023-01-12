@@ -1,7 +1,9 @@
 <div>
     <ul>
         {{#each mensajes}}
-        <li><span>{{ this.email }}</span> <span>[{{ this.date }}]</span> <i>{{ this.msg }}</i> </li>
+        <li><span>{{ this.author.id }}</span> <span>[{{ this.author.name }}]</span> <i>{{ this.text
+                }}</i>
+        </li>
         {{/each }}
     </ul>
 </div>
