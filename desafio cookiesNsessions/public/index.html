@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagicKeyboards!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <!-- <span class="d-flex mt-5">
+                <form id="cookiesForm" method="post" enctype="application/x-www-form-urlencoded">
+                    <h1>Ingrese usuario</h1>
+                    <input type="text" id="nameForm" class='border border-1 border-success rounded'>
+                    <button type="submit" class='mb-3 rounded border border-info'>Enviar</button>
+                </form>
+            </span> -->
+            <span class="p-5">
+                <form action="" method="post">
+                    <label for="POST-name">Ingrese usuario:</label>
+                    <input id="POST-name" type="text" name="name">
+                    <input type="submit" value="Enviar">
+                </form>
+            </span>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="form">
+                    <form style="width:500px;" id="addProd">
+                        <fieldset>
+                            <legend>Agregue un producto</legend>
+                            <div>
+                                <label for="title">Nombre</label>
+                                <input type="text" name="title" id="title"
+                                    class='d-block mb-3 border border-1 border-success rounded'>
+                            </div>
+                            <div>
+                                <label for="price">Precio</label>
+                                <input type="number" name="price" id="price"
+                                    class='d-block mb-3 border border-1 border-success rounded'>
+                            </div>
+                            <div>
+                                <label for="thumbnail">Imagen</label>
+                                <input type="text" name="thumbnail" id="thumbnail"
+                                    class='d-block mb-3 border border-1 border-success rounded'>
+                            </div>
+                            <button type="submit" class='mb-3 rounded border border-info'>Enviar</button>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- <div>
+                    <h3>Chat de productos</h3>
+                    <div id="chatList">
+
+                    </div>
+                    <div>
+                        <form id="chat">
+                            <input type="text" id="email" placeholder="email@ejemplo.com">
+                            <input type="text" id="mensaje" placeholder="escribí un mensaje">
+                            <button type="submit" class='mb-3 rounded border border-info'>Enviar mensaje</button>
+                        </form>
+                    </div>
+                </div> -->
+            </div>
+            <div id="productos" class="col"> No hay productos que mostrar</div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

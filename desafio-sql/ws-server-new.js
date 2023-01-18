@@ -5,6 +5,7 @@ import { Server as IoServer } from "socket.io";
 import { Server as HttpServer } from "http";
 import ContainerMongoDb from "./containerMongoDb.js";
 import { normalize, schema } from "normalizr"
+import cookieParser from "cookie-parser";
 // const { Server: HttpServer } = require('http')
 // const { Server: IoServer } = require('socket.io')
 
