@@ -1,6 +1,9 @@
 import { Router } from "express";
 import passport from "passport";
 import { obtenerUsuarios } from "../persistenciaMongo/usuarios.js";
+import { processInfoAr } from "../childNprocessStuff/processInfo.js";
+import { fork } from 'child_process'
+//import { calculoDificil } from "../childNprocessStuff/numbersChild.js";
 
 export const usuariosRouter = Router()
 
@@ -60,9 +63,6 @@ authRouter.get('/failLogin', (req, res) => {
     //res.status(401).json({ err: 'fallo el login' })
 })
 
-
-
-
 authRouter.post('/logout', function (req, res, next) {
     req.logout(function (err) {
         if (err) { return next(err); }
@@ -70,28 +70,41 @@ authRouter.post('/logout', function (req, res, next) {
         res.redirect('/api/usuarios');
     });
 });
-//logout
-/* authRouter.post('/logout', (req, res) => {
-    req.logout(err => {
-        if (err) {
-            res.send('Han error has ocurred')
+
+//----------------------router child--------------------------------------------------
+export const childProcessRouter = Router()
+
+childProcessRouter.get('/', (req, res) => {
+
+    const coso = req.query.number ?? 10000
+    const forked = fork('./childNprocessStuff/numbersChild.js')
+    let auxObj
+    forked.on('message', msg => {
+
+        if (msg == 'listo') {
+
+            forked.send(coso)
+
         } else {
-            res.redirect('/api/usuarios/')
+            auxObj = msg
+            res.send(auxObj)
         }
     })
 
-    if (req.isAuthenticated()) {
-        req.logout(err => {
-            if (err) {
-                console.log('hola12')
-                res.sendStatus(200)
-            } else {
-                console.log('hola13')
-                res.redirect('/api/usuarios/')
-            }
-        })
-    } else {
-        console.log('hola28')
-        res.redirect('/api/usuarios/')
-    }
-}) */
+})
+
+
+//---------------------router info------------------------
+
+export const processInfo = Router()
+
+processInfo.get('/', (req, res) => {
+    const processData = processInfoAr
+    //console.log(processData)
+    /* res.render('pages/processInfo', {
+        processData: processData
+    }) */
+
+    res.json({ processData })
+})
+

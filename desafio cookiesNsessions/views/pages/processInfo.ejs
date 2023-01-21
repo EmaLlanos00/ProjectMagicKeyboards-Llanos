@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagicKeyboards!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <div>
+                <table class='border border-2 border-dark mx-auto'>
+                    <caption>Información obtenida de Process</caption>
+                    <thead>
+                        <tr class='border border-secondary border-top-0 border-start-0 border-end-0 border-bottom-2'>
+                            <th class='bg-success p-1 text-center'>Dato</th>
+                            <th
+                                class='bg-success border border-secondary border-top-0 border-bottom-0 border-2 p-1 text-center'>
+                                Coso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i=0; i<=processData.length; i++) { %>
+                            <tr>
+                                <td
+                                    class='bg-info border border-secondary border-end-2 border-start-0 border-bottom-0 border-top-0 p-2'>
+                                    <% processData[i].typeData %>
+                                </td>
+                                <td
+                                    class='bg-info border border-secondary border-end-2 border-start-0 border-bottom-0 border-top-0 p-2'>
+                                    <% processData[i].actualData %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="form">
+                    <form style="width:500px;" id="addProd">
+                        <fieldset>
+                            <legend>Agregue un productoo</legend>
+                            <div>
+                                <label for="title">Nombre</label>
+                                <input type="text" name="title" id="title"
+                                    class='d-block mb-3 border border-1 border-success rounded'>
+                            </div>
+                            <div>
+                                <label for="price">Precio</label>
+                                <input type="number" name="price" id="price"
+                                    class='d-block mb-3 border border-1 border-success rounded'>
+                            </div>
+                            <div>
+                                <label for="thumbnail">Imagen</label>
+                                <input type="text" name="thumbnail" id="thumbnail"
+                                    class='d-block mb-3 border border-1 border-success rounded'>
+                            </div>
+                            <button type="submit" class='mb-3 rounded border border-info'>Enviar</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+
+            <script src="./script.js"></script>
+</body>
+
+</html>

@@ -2,9 +2,13 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
+import dotenv from 'dotenv'
 import { passportMiddleware, passportSessionHandler } from './middlewares/passport.js'
-import { usuariosRouter, authRouter } from './routes/routes.js'
+import { usuariosRouter, authRouter, childProcessRouter, processInfo } from './routes/routes.js'
 const app = express()
+
+
+dotenv.config({})
 
 //---------------middlewares---------------------------------------
 app.use(cookieParser())
@@ -12,7 +16,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://emanuelDb:emanuellls@cluster0.zp6igpt.mongodb.net/?retryWrites=true&w=majority'
+        mongoUrl: process.env.MONGOURL
     }),
     secret: 'bruh',
     resave: false,
@@ -60,6 +64,9 @@ app.post('/deleting', (req, res) => {
 
 app.use('/api/usuarios', usuariosRouter)
 app.use('/auth', authRouter)
+//-------rutas de desafío process and child---------
+app.use('/api/randoms', childProcessRouter)
+app.use('/info', processInfo)
 
 const PORT = 8080
 const server = app.listen(PORT, () => {
