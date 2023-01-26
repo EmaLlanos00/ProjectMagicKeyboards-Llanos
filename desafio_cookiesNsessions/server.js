@@ -68,11 +68,22 @@ app.use('/auth', authRouter)
 app.use('/api/randoms', childProcessRouter)
 app.use('/info', processInfo)
 
-const PORT = 8080
-const server = app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`)
+//-------------------endpoint de desafío Porxy n Nginx 
+
+app.get('/', (req, res) => {
+    res.send(`Escuchando con cluster en el PID ${process.pid}`)
 })
-server.on('error', error => console.log(`error en el servidor: ${error}`))
+//const PORT = 8080
+export function startServer(PORT) {
+
+    const server = app.listen(PORT, () => {
+        console.log(`Servidor ${process.pid} escuchando en el puerto http://localhost:${PORT}`)
+    })
+
+
+    server.on('error', error => console.log(`error en el servidor: ${error}`))
+}
+//if (process.argv[2] == 8080) { startServer() }
 
 /* ejemplo sencillo sin session
     app.post('/ejstest', (req, res) => {

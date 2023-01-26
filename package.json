@@ -13,7 +13,8 @@
     "sql": "cd desafio-sql && nodemon ws-server-new.js",
     "old": "cd (old)desafios-3-y-4 && nodemon app.js",
     "testing": "cd preentrega1 && nodemon testing.js",
-    "cookies": "cd desafio cookiesNsessions && nodemon server.js"
+    "cookies": "cd desafio cookiesNsessions && nodemon server.js",
+    "server": "cd desafio cookiesNsessions && nodemon masterServer.js"
   },
   "keywords": [],
   "author": "Emanuel Llanos",

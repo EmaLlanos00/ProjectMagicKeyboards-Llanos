@@ -1,4 +1,4 @@
-
+import os from 'os'
 
 export const processInfoAr = []
 
@@ -24,6 +24,9 @@ const entryArg = {
     Argumento_de_entrada: process.argv
 }
 
+const cpusQty = {
+    Cantidad_de_procesadores: os.cpus().length
+}
 processInfoAr.push(plataforma)
 processInfoAr.push(processId)
 processInfoAr.push(nodeVersion)
@@ -31,3 +34,4 @@ processInfoAr.push(memory)
 processInfoAr.push(proyectPath)
 processInfoAr.push(proyectRoute)
 processInfoAr.push(entryArg)
+processInfoAr.push(cpusQty)
