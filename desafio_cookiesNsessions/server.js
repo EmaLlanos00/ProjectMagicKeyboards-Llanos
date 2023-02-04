@@ -5,12 +5,16 @@ import MongoStore from 'connect-mongo'
 import dotenv from 'dotenv'
 import { passportMiddleware, passportSessionHandler } from './middlewares/passport.js'
 import { usuariosRouter, authRouter, childProcessRouter, processInfo } from './routes/routes.js'
+import { logDefault, logWarn, logError } from './loggers/logger.js'
+import compression from 'compression'
+
 const app = express()
 
 
 dotenv.config({})
 
 //---------------middlewares---------------------------------------
+//app.use(compression())
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -27,8 +31,17 @@ app.use(passportMiddleware)
 app.use(passportSessionHandler)
 
 app.use('/cookies', express.static('public'))
+app.use(function (req, res, next) {
+    //console.log("A user made a request to the endpoint: " + req.url);
+    logDefault.info(`ruta: ${req.url} , method: ${req.method}`)
+    next();
+})
+
 app.set('view engine', 'ejs')
 
+app.all((req, res) => {
+    console.log('holatesteando')
+})
 
 app.get('/login', (req, res) => {
 
@@ -67,12 +80,29 @@ app.use('/auth', authRouter)
 //-------rutas de desafío process and child---------
 app.use('/api/randoms', childProcessRouter)
 app.use('/info', processInfo)
+app.use('/infoZip', compression(), processInfo)
 
 //-------------------endpoint de desafío Porxy n Nginx 
 
 app.get('/', (req, res) => {
     res.send(`Escuchando con cluster en el PID ${process.pid}`)
 })
+
+
+app.use((req, res, next) => {
+    res.status(404).send("Lo sentimos, esa ruta no existe :/");
+    //console.error(`Error: endpoint ${req.originalUrl} not found`);
+    logDefault.warn(`Ruta inexistente: ${req.originalUrl}`)
+    logWarn.warn(`Ruta inexistente: ${req.originalUrl}`)
+});
+
+app.use((err, req, res, next) => {
+    //console.error(err.stack);
+    logError.error(`Ups, ocurrió un error: ${err}`)
+    logDefault.error(`Ups, ocurrió un error: ${err}`)
+    res.status(500).send("Something went wrong. Please try again later.");
+});
+
 //const PORT = 8080
 export function startServer(PORT) {
 

@@ -13,8 +13,8 @@
     "sql": "cd desafio-sql && nodemon ws-server-new.js",
     "old": "cd (old)desafios-3-y-4 && nodemon app.js",
     "testing": "cd preentrega1 && nodemon testing.js",
-    "cookies": "cd desafio cookiesNsessions && nodemon server.js",
-    "server": "cd desafio cookiesNsessions && nodemon masterServer.js"
+    "cookies": "cd desafio_cookiesNsessions && nodemon server.js",
+    "server": "cd desafio_cookiesNsessions && nodemon masterServer.js"
   },
   "keywords": [],
   "author": "Emanuel Llanos",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "crypto": "^1.0.1",
@@ -34,6 +35,7 @@
     "express-session": "^1.17.3",
     "firebase-admin": "^11.4.1",
     "knex": "^2.3.0",
+    "log4js": "^6.7.1",
     "mongodb": "^4.13.0",
     "mysql2": "^2.3.3",
     "normalizr": "^3.6.2",
